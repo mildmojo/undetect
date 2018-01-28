@@ -7,91 +7,7 @@
 <title>Write your game's title here</title>
 
 <script type="bitsyGameData" id="exportedGameData">
-Write your game's title here
-
-# BITSY VERSION 4.5
-
-! ROOM_FORMAT 1
-
-PAL 0
-0,82,204
-128,159,255
-255,255,255
-
-ROOM 0
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-0,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,0,0,0,0,0,0,0,0,0,0,0,0,a,0
-0,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-PAL 0
-
-TIL a
-11111111
-10000001
-10000001
-10011001
-10011001
-10000001
-10000001
-11111111
-
-SPR A
-00011000
-00011000
-00011000
-00111100
-01111110
-10111101
-00100100
-00100100
-POS 0 4,4
-
-SPR a
-00000000
-00000000
-01010001
-01110001
-01110010
-01111100
-00111100
-00100100
-DLG SPR_0
-POS 0 8,12
-
-ITM 0
-00000000
-00000000
-00000000
-00111100
-01100100
-00100100
-00011000
-00000000
-NAME tea
-DLG ITM_0
-
-DLG SPR_0
-I'm a cat
-
-DLG ITM_0
-You found a nice warm cup of tea
-
-VAR a
-42
-
-
+IMPORT undetect.bitsydata
 </script>
 
 <style>
@@ -141,11 +57,11 @@ function hexToRgb(hex) {
 	} : null;
 }
 function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
+		var hex = c.toString(16);
+		return hex.length == 1 ? "0" + hex : hex;
 }
 function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+		return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
 
@@ -156,28 +72,28 @@ function rgbToHex(r, g, b) {
  * h, s, v
 */
 function HSVtoRGB(h, s, v) {
-    var r, g, b, i, f, p, q, t;
-    if (arguments.length === 1) {
-        s = h.s, v = h.v, h = h.h;
-    }
-    i = Math.floor(h * 6);
-    f = h * 6 - i;
-    p = v * (1 - s);
-    q = v * (1 - f * s);
-    t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0: r = v, g = t, b = p; break;
-        case 1: r = q, g = v, b = p; break;
-        case 2: r = p, g = v, b = t; break;
-        case 3: r = p, g = q, b = v; break;
-        case 4: r = t, g = p, b = v; break;
-        case 5: r = v, g = p, b = q; break;
-    }
-    return {
-        r: Math.round(r * 255),
-        g: Math.round(g * 255),
-        b: Math.round(b * 255)
-    };
+		var r, g, b, i, f, p, q, t;
+		if (arguments.length === 1) {
+				s = h.s, v = h.v, h = h.h;
+		}
+		i = Math.floor(h * 6);
+		f = h * 6 - i;
+		p = v * (1 - s);
+		q = v * (1 - f * s);
+		t = v * (1 - (1 - f) * s);
+		switch (i % 6) {
+				case 0: r = v, g = t, b = p; break;
+				case 1: r = q, g = v, b = p; break;
+				case 2: r = p, g = v, b = t; break;
+				case 3: r = p, g = q, b = v; break;
+				case 4: r = t, g = p, b = v; break;
+				case 5: r = v, g = p, b = q; break;
+		}
+		return {
+				r: Math.round(r * 255),
+				g: Math.round(g * 255),
+				b: Math.round(b * 255)
+		};
 }
 
 /* accepts parameters
@@ -186,27 +102,27 @@ function HSVtoRGB(h, s, v) {
  * r, g, b
 */
 function RGBtoHSV(r, g, b) {
-    if (arguments.length === 1) {
-        g = r.g, b = r.b, r = r.r;
-    }
-    var max = Math.max(r, g, b), min = Math.min(r, g, b),
-        d = max - min,
-        h,
-        s = (max === 0 ? 0 : d / max),
-        v = max / 255;
+		if (arguments.length === 1) {
+				g = r.g, b = r.b, r = r.r;
+		}
+		var max = Math.max(r, g, b), min = Math.min(r, g, b),
+				d = max - min,
+				h,
+				s = (max === 0 ? 0 : d / max),
+				v = max / 255;
 
-    switch (max) {
-        case min: h = 0; break;
-        case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
-        case g: h = (b - r) + d * 2; h /= 6 * d; break;
-        case b: h = (r - g) + d * 4; h /= 6 * d; break;
-    }
+		switch (max) {
+				case min: h = 0; break;
+				case r: h = (g - b) + d * (g < b ? 6: 0); h /= 6 * d; break;
+				case g: h = (b - r) + d * 2; h /= 6 * d; break;
+				case b: h = (r - g) + d * 4; h /= 6 * d; break;
+		}
 
-    return {
-        h: h,
-        s: s,
-        v: v
-    };
+		return {
+				h: h,
+				s: s,
+				v: v
+		};
 }
 
 // source : https://gist.github.com/mjackson/5311256
@@ -222,29 +138,29 @@ function RGBtoHSV(r, g, b) {
  * @return  Array           The RGB representation
  */
 function hslToRgb(h, s, l) {
-  var r, g, b;
+	var r, g, b;
 
-  if (s == 0) {
-    r = g = b = l; // achromatic
-  } else {
-    function hue2rgb(p, q, t) {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1/6) return p + (q - p) * 6 * t;
-      if (t < 1/2) return q;
-      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-      return p;
-    }
+	if (s == 0) {
+		r = g = b = l; // achromatic
+	} else {
+		function hue2rgb(p, q, t) {
+			if (t < 0) t += 1;
+			if (t > 1) t -= 1;
+			if (t < 1/6) return p + (q - p) * 6 * t;
+			if (t < 1/2) return q;
+			if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+			return p;
+		}
 
-    var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    var p = 2 * l - q;
+		var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+		var p = 2 * l - q;
 
-    r = hue2rgb(p, q, h + 1/3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1/3);
-  }
+		r = hue2rgb(p, q, h + 1/3);
+		g = hue2rgb(p, q, h);
+		b = hue2rgb(p, q, h - 1/3);
+	}
 
-  return [ r * 255, g * 255, b * 255 ];
+	return [ r * 255, g * 255, b * 255 ];
 }
 
 /**
@@ -261,24 +177,24 @@ function hslToRgb(h, s, l) {
  * @return  {Array}           The HSL representation
  */
 function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
+		r /= 255, g /= 255, b /= 255;
+		var max = Math.max(r, g, b), min = Math.min(r, g, b);
+		var h, s, l = (max + min) / 2;
 
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
+		if(max == min){
+				h = s = 0; // achromatic
+		}else{
+				var d = max - min;
+				s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+				switch(max){
+						case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+						case g: h = (b - r) / d + 2; break;
+						case b: h = (r - g) / d + 4; break;
+				}
+				h /= 6;
+		}
 
-    return [h, s, l];
+		return [h, s, l];
 }
 </script>
 
@@ -4702,16 +4618,52 @@ function attachCanvas(c) {
 
 var curGameData = null;
 function load_game(game_data, startWithTitle) {
-	curGameData = game_data; //remember the current game (used to reset the game)
-	dialogBuffer.Reset();
-	scriptInterpreter.ResetEnvironment(); // ensures variables are reset -- is this the best way?
-	// console.log(dialog);
-	parseWorld(game_data);
-	// console.log(dialog);
-	setInitialVariables();
-	renderImages();
-	onready(startWithTitle);
-	// console.log(dialog);
+	tryImportGameData(game_data, function withGameData(err, importedData) {
+		curGameData = importedData; //remember the current game (used to reset the game)
+		dialogBuffer.Reset();
+		scriptInterpreter.ResetEnvironment(); // ensures variables are reset -- is this the best way?
+		// console.log(dialog);
+		parseWorld(game_data);
+		// console.log(dialog);
+		setInitialVariables();
+		renderImages();
+		onready(startWithTitle);
+		// console.log(dialog);
+	});
+}
+
+function tryImportGameData(game_data, done) {
+	var rejectBlanks = function(line) { return !line.match(/^\s*$/); };
+	var lines = game_data.split("\n")
+	lines = lines.filter(rejectBlanks);
+
+	if (getType(lines[0]) === "IMPORT") {
+		var src = lines[0].split(/\s+/)[1];
+		if (!src) return done('IMPORT requires a URL or path to a Bitsy data file!');
+		return fetchData(src, done);
+	} else {
+		return game_data;
+	}
+}
+
+function fetchData(url, done) {
+	var request = new XMLHttpRequest();
+	request.open('GET', url, true);
+
+	request.onload = function() {
+		if (this.status >= 200 && this.status < 400) {
+			// Success!
+			return done(null, this.response);
+		} else {
+			return done('Failed to load game data: ' + request.statusText + ' (' + this.status + ')');
+		}
+	};
+
+	request.onerror = function() {
+		return done('Failed to load game data: ' + request.statusText);
+	};
+
+	request.send();
 }
 
 function reset_cur_game() {
@@ -5120,7 +5072,7 @@ function update() {
 }
 
 var animationCounter = 0;
-var animationTime = 400;
+var animationTime = 200;
 function updateAnimation() {
 	animationCounter += deltaTime;
 
