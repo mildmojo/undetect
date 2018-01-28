@@ -4,7 +4,7 @@
 <!-- HEADER -->
 <head>
 
-<title>Write your game's title here</title>
+<title></title>
 
 <script type="bitsyGameData" id="exportedGameData">
 IMPORT undetect.bitsydata
@@ -20,7 +20,7 @@ body {
 	margin:0px;
 	padding:0px;
 	overflow:hidden;
-	background:#ffffff;
+	background:#111;
 }
 
 #game {
@@ -29,6 +29,7 @@ body {
 	max-width:100vh;
 	margin:auto;
 	display:block;
+	transform: rotate(3deg);
 }
 </style>
 
@@ -2686,6 +2687,64 @@ function sayFunc(environment,parameters,onReturn) {
 		onReturn(null);
 }
 
+// {newsprite 0 0 5}
+function newSpriteFunc(environment,parameters,onReturn) {
+	console.dir(arguments);
+	var thisRoom = room[curRoom];
+	var x = parameters[0];
+	var y = parameters[1];
+	var newSpriteNum = parameters[2];
+	var isAt = function(x, y) { return function(item) { return item.x === x && item.y === y; }; };
+	var notAt = function(x, y) { return function(item) { return !isAt(x, y)(item); }; };
+	thisRoom.items = thisRoom.items.filter(notAt(x, y));
+
+	for (var id in sprite) {
+		var spr = sprite[id];
+		if (spr.room === thisRoom.id) {
+			delete sprite[id];
+		}
+	}
+
+
+	return onReturn(null);
+
+	var room = null;
+	//draw tiles
+	for (i in room.tilemap) {
+		for (j in room.tilemap[i]) {
+			var id = room.tilemap[i][j];
+			if (id != "0") {
+				//console.log(id);
+				if (tile[id] == null) { // hack-around to avoid corrupting files (not a solution though!)
+					id = "0";
+					room.tilemap[i][j] = id;
+				}
+				else {
+					// console.log(id);
+					drawTile( getTileImage(tile[id],getRoomPal(room.id)), j, i, context );
+				}
+			}
+		}
+	}
+	//draw items
+	for (var i = 0; i < room.items.length; i++) {
+		var itm = room.items[i];
+		drawItem( getItemImage(item[itm.id],getRoomPal(room.id)), itm.x, itm.y, context );
+	}
+	//draw sprites
+	for (id in sprite) {
+		var spr = sprite[id];
+		if (spr.room === room.id) {
+			drawSprite( getSpriteImage(spr,getRoomPal(room.id)), spr.x, spr.y, context );
+		}
+	}
+
+
+}
+
+function newItemFunc() {}
+function newTileFunc() {}
+
 function linebreakFunc(environment,parameters,onReturn) {
 	// console.log("LINEBREAK FUNC");
 	environment.GetDialogBuffer().AddLinebreak();
@@ -2831,6 +2890,9 @@ var Environment = function() {
 
 	var functionMap = new Map();
 	functionMap.set("say", sayFunc);
+	functionMap.set("newsprite", newSpriteFunc);
+	functionMap.set("newitem", newItemFunc);
+	functionMap.set("newtile", newTileFunc);
 	functionMap.set("br", linebreakFunc);
 	functionMap.set("item", itemFunc);
 	functionMap.set("rbw", rainbowFunc);
@@ -4623,7 +4685,7 @@ function load_game(game_data, startWithTitle) {
 		dialogBuffer.Reset();
 		scriptInterpreter.ResetEnvironment(); // ensures variables are reset -- is this the best way?
 		// console.log(dialog);
-		parseWorld(game_data);
+		parseWorld(importedData);
 		// console.log(dialog);
 		setInitialVariables();
 		renderImages();
@@ -4632,9 +4694,9 @@ function load_game(game_data, startWithTitle) {
 	});
 }
 
-function tryImportGameData(game_data, done) {
+function tryImportGameData(gameData, done) {
 	var rejectBlanks = function(line) { return !line.match(/^\s*$/); };
-	var lines = game_data.split("\n")
+	var lines = gameData.split("\n")
 	lines = lines.filter(rejectBlanks);
 
 	if (getType(lines[0]) === "IMPORT") {
@@ -4642,7 +4704,7 @@ function tryImportGameData(game_data, done) {
 		if (!src) return done('IMPORT requires a URL or path to a Bitsy data file!');
 		return fetchData(src, done);
 	} else {
-		return game_data;
+		return done(null, gameData);
 	}
 }
 
@@ -5072,7 +5134,7 @@ function update() {
 }
 
 var animationCounter = 0;
-var animationTime = 200;
+var animationTime = 400;
 function updateAnimation() {
 	animationCounter += deltaTime;
 
@@ -5821,6 +5883,7 @@ function getCoord(line,arg) {
 
 function parseTitle(lines, i) {
 	title = lines[i];
+	document.title =title;
 	i++;
 	return i;
 }
