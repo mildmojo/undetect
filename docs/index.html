@@ -3084,28 +3084,28 @@ function isMultilineListBlock(node) {
 	return false;
 }
 
-var FuncNode = function(name,arguments) {
+var FuncNode = function(name,funcArgs) {
 	Object.assign( this, new TreeRelationship() );
 	// Object.assign( this, new Runnable() );
 	this.type = "function";
 	this.name = name;
-	this.arguments = arguments;
+	this.funcArgs = funcArgs;
 
 	this.Eval = function(environment,onReturn) {
 
 		if( this.onEnter != null ) this.onEnter();
 
 		// console.log("FUNC");
-		// console.log(this.arguments);
+		// console.log(this.funcArgs);
 		var argumentValues = [];
 		var i = 0;
-		function evalArgs(arguments,done) {
-			if(i < arguments.length) {
+		function evalArgs(funcArgs,done) {
+			if(i < funcArgs.length) {
 				// Evaluate each argument
-				arguments[i].Eval( environment, function(val) {
+				funcArgs[i].Eval( environment, function(val) {
 					argumentValues.push( val );
 					i++;
-					evalArgs(arguments,done);
+					evalArgs(funcArgs,done);
 				} );
 			}
 			else {
@@ -3113,7 +3113,7 @@ var FuncNode = function(name,arguments) {
 			}
 		};
 		var self = this; // hack to deal with scope
-		evalArgs( this.arguments, function() {
+		evalArgs( this.funcArgs, function() {
 			// Then evaluate the function
 			// console.log("ARGS");
 			// console.log(argumentValues);
