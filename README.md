@@ -2,7 +2,7 @@
 
 <img src="/media/screenshot.png" width="400" alt="Screenshot" title="Screenshot" align="center">
 
-> [Play online](https://mildmojo.github.io/undetect)
+> [Play now!](https://mildmojo.github.io/undetect)
 
 > [Download](https://github.com/mildmojo/undetect/releases/)
 
