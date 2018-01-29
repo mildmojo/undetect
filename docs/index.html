@@ -2744,6 +2744,20 @@ function newSpriteFunc(environment,parameters,onReturn) {
 
 function newItemFunc() {}
 function newTileFunc() {}
+function exitFunc(environment, parameters, onReturn) {
+	var roomName = parameters[0];
+	var x = parameters[1];
+	var y = parameters[2]
+	var roomId = names.room.get(roomName);
+
+	if (roomId) {
+		queuedDialogExit = {
+			room: roomId,
+			x: x,
+			y: y
+		};
+	}
+}
 
 function linebreakFunc(environment,parameters,onReturn) {
 	// console.log("LINEBREAK FUNC");
@@ -2893,6 +2907,7 @@ var Environment = function() {
 	functionMap.set("newsprite", newSpriteFunc);
 	functionMap.set("newitem", newItemFunc);
 	functionMap.set("newtile", newTileFunc);
+	functionMap.set("exit", exitFunc);
 	functionMap.set("br", linebreakFunc);
 	functionMap.set("item", itemFunc);
 	functionMap.set("rbw", rainbowFunc);
@@ -4536,6 +4551,7 @@ var palette = {
 var ending = {};
 var variable = {}; // these are starting variable values -- they don't update (or I don't think they will)
 var playerId = "A";
+var queuedDialogExit = null;
 
 var names = {
 	room : new Map(),
@@ -4610,6 +4626,7 @@ function clearGameData() {
 	ending = {};
 	isEnding = false; //todo - correct place for this?
 	variable = {};
+	queuedDialogExit = null;
 
 	//stores all image data for tiles, sprites, drawings
 	imageStore = {
@@ -5347,10 +5364,7 @@ function movePlayer(direction) {
 		startNarrating( ending[end.id], true /*isEnding*/ );
 	}
 	else if (ext) {
-		player().room = ext.dest.room;
-		player().x = ext.dest.x;
-		player().y = ext.dest.y;
-		curRoom = ext.dest.room;
+		doPlayerExit(ext.dest);
 	}
 	else if (spr) {
 		startSpriteDialog( spr /*spriteId*/ );
@@ -5374,6 +5388,14 @@ function movePlayer(direction) {
 
 		// console.log( player().inventory );
 	}
+}
+
+// dest === {room: Room, x: Int, y: Int}
+function doPlayerExit(dest) {
+	player().room = dest.room;
+	player().x = dest.x;
+	player().y = dest.y;
+	curRoom = dest.room;
 }
 
 function onkeyup(e) {
@@ -6554,6 +6576,10 @@ function onExitDialog() {
 		isDialogPreview = false;
 		if (onDialogPreviewEnd != null)
 			onDialogPreviewEnd();
+	}
+	if (queuedDialogExit) {
+		doPlayerExit(queuedDialogExit);
+		queuedDialogExit = null;
 	}
 }
 
