@@ -5905,7 +5905,7 @@ function getCoord(line,arg) {
 
 function parseTitle(lines, i) {
 	title = lines[i];
-	document.title =title;
+	document.title = title.replace(/\{.+?\}/g, '—');
 	i++;
 	return i;
 }
