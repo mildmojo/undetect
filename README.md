@@ -10,6 +10,8 @@ The detective has a few open cases.
 
 Every day it's getting harder to get out of bed.
 
+What is a detective who doesn't detect?
+
 --------------------------------------------------------------------------
 
 LEFT UNDETECTED is a tiny story about not wanting to do the thing you've done all
