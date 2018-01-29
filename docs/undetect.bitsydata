@@ -1,4 +1,4 @@
-Write your game's title here
+LEFT UNDETECTED
 
 # BITSY VERSION 4.5
 
@@ -11,9 +11,27 @@ NAME earlymorning
 102,109,247
 
 PAL 1
-NAME daytime
+NAME noon
 224,208,168
 105,95,77
+102,109,247
+
+PAL 2
+NAME evening
+167,141,158
+248,210,139
+102,109,247
+
+PAL 3
+NAME night
+99,32,112
+158,151,255
+102,109,247
+
+PAL 4
+NAME ending_gone
+255,255,255
+255,255,255
 102,109,247
 
 ROOM 0
@@ -34,12 +52,7 @@ ROOM 0
 0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME earlymorning
-ITM 0 4,3
-ITM 0 5,2
-ITM 0 6,3
-ITM 0 5,11
-ITM 0 4,10
-ITM 0 4,12
+EXT 8,13 1 5,3
 PAL 0
 
 ROOM 1
@@ -60,8 +73,71 @@ ROOM 1
 0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NAME noon
-EXT 5,3 0 0,0
+EXT 8,13 2 5,3
 PAL 1
+
+ROOM 2
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,n,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
+0,a,0,0,o,p,0,0,0,k,h,r,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,a,0,0,0,0,0,0,0,k,h,t,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+NAME evening
+EXT 8,13 3 5,3
+PAL 2
+
+ROOM 3
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,n,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
+0,a,0,0,o,p,0,0,0,k,h,r,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,a,0,0,0,0,0,0,0,k,h,t,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+NAME night
+EXT 8,13 4 5,3
+PAL 3
+
+ROOM 4
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,n,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
+0,a,0,0,o,p,0,0,0,k,h,r,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,a,0,0,0,0,0,0,0,k,h,t,d,0,0,0
+0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
+0,a,0,0,0,0,0,0,0,a,0,0,0,0,0,0
+0,a,a,a,a,a,a,a,a,a,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+NAME ending_gone
+EXT 8,13 4 5,3
+PAL 3
 
 TIL a
 11111111
@@ -275,6 +351,36 @@ TIL q
 11111110
 WAL true
 
+TIL r
+00000000
+00000000
+11011011
+10011001
+11011001
+10011001
+11100101
+00000000
+
+TIL s
+00000000
+00000000
+00110110
+00110010
+00110010
+00110010
+01001010
+00000000
+
+TIL t
+00000000
+00000000
+01011011
+01100110
+01100111
+01100110
+11011011
+00000000
+
 SPR A
 00000000
 00000000
@@ -303,122 +409,6 @@ SPR A
 00111100
 00000000
 POS 0 5,3
-
-SPR B
-00000000
-00000000
-00011000
-00100100
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00001000
-00010100
-00100000
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00010000
-00101000
-00000100
-00000000
-00011000
-00111100
-00000000
-POS 1 5,3
-
-SPR C
-00000000
-00000000
-00011000
-00100100
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00001000
-00010100
-00100000
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00010000
-00101000
-00000100
-00000000
-00011000
-00111100
-00000000
-POS 2 5,3
-
-SPR D
-00000000
-00000000
-00011000
-00100100
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00001000
-00010100
-00100000
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00010000
-00101000
-00000100
-00000000
-00011000
-00111100
-00000000
-POS 3 5,3
-
-SPR E
-00000000
-00000000
-00011000
-00100100
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00001000
-00010100
-00100000
-00000000
-00011000
-00111100
-00000000
->
-00000000
-00010000
-00101000
-00000100
-00000000
-00011000
-00111100
-00000000
-POS 4 5,3
 
 SPR a
 00000000
@@ -595,6 +585,7 @@ SPR k
 01000111
 01111111
 00111111
+POS 2 3,11
 
 SPR l
 00011100
@@ -606,6 +597,7 @@ SPR l
 11111110
 11111100
 DLG SPR_2
+POS 2 4,11
 
 SPR m
 00000000
@@ -616,6 +608,7 @@ SPR m
 01000111
 01111111
 00111111
+POS 3 3,11
 
 SPR n
 00011100
@@ -627,6 +620,7 @@ SPR n
 11111110
 11111100
 DLG SPR_3
+POS 3 4,11
 
 SPR o
 00000000
@@ -637,6 +631,7 @@ SPR o
 01000000
 01111111
 00111111
+POS 4 3,11
 
 SPR p
 00000000
@@ -647,61 +642,18 @@ SPR p
 00000010
 11111110
 11111100
-
-ITM 0
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-NAME morning
+POS 4 4,11
 
 ITM 1
 00000000
 00000000
-00000000
-00000000
-00000000
-00000000
+00100000
+00100000
+00010000
+00001000
 00000000
 00000000
 NAME noon
-
-ITM 2
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-NAME evening
-
-ITM 3
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-NAME night
-
-ITM 4
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-00000000
-NAME ending_gone
 
 DLG SPR_0
 """
@@ -723,7 +675,7 @@ DLG SPR_0
 DLG SPR_1
 """
 {
-  - {item "noon"} < 1 ?
+  - noon < 1 ?
     SRIRACHA: He left for Salt Lake on "business" this morning.
     DETECTIVE: Sriracha? Hey, okay, I'll look into it.
     SRIRACHA: BUSINESS MY BEAUTIFUL ASS, DETECTIVE.
@@ -736,21 +688,24 @@ DLG SPR_1
 DLG SPR_2
 """
 {
-  - {item "evening"} == 1 ?
+  - evening < 1 ?
     CASEY: Hi, Detective? It's Casey.
     DETECTIVE: Casey! Hi! Wow, it's been a minute, huh?
     CASEY: Yeah! You haven't posted anything lately, so I wanted to check in.
+
     DETECTIVE: That's really sweet of you. I've just been really tired lately.
+
     CASEY: How's your case load?
 
     DETECTIVE: It's fine. I've been thinking about... not doing it anymore.
+
     CASEY: Not doing cases? Like, becoming a consultant?
     DETECTIVE: Like leaving the biz. All of it.
     CASEY: Oh, wow. How come?
 
     DETECTIVE: I just... I dread another day of asking questions. The magic faded years ago, but now the purpose is gone.
-
     CASEY: I know how you feel. Remember when I started doing real estate?
+
     DETECTIVE: Yeah. You were an accountant before? Something like that?
 
     CASEY: Invoicing. Close. Windowless desk, cranky bursars on the phone. Office politics.
@@ -758,7 +713,6 @@ DLG SPR_2
     DETECTIVE: [agreement sounds]
 
     CASEY: Now I talk to real people. In person. I'm out in the world. I can dress like I want.
-
     DETECTIVE: I've always liked the way you dress. Think I could pull off a scarf with a trench?
 
     CASEY: Aw. [smiling] Absolutely you could. So: maybe do something else? Or nothing?
@@ -770,6 +724,7 @@ DLG SPR_2
     DETECTIVE: Yeah. Thanks.
 
     CASEY: Let's get lunch sometime. I'll be in the city next week...?
+
     DETECTIVE: Yeah, definitely. {evening = 1}
   - else ?
 
@@ -779,12 +734,12 @@ DLG SPR_2
 DLG SPR_3
 """
 {
-  - {item "night"} < 1 ?
+  - night < 1 ?
     ???: Is Quentin there? Hello?
 
     Hello, you still there?
 
-    DETECTIVE: Yeah, sorry, wrong number.
+    DETECTIVE: Yeah, sorry, wrong number. {night = 1}
   - else ?
 
 }
