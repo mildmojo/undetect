@@ -30,6 +30,30 @@ body {
 	margin:auto;
 	display:block;
 	transform: rotate(3deg);
+	z-index: 10;
+}
+
+#links {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+#links,
+#links a,
+#links a:visited {
+	font-family: Georgia, Serif;
+	font-size: 10pt;
+	color: #ccc;
+}
+
+#links div {
+	padding: 1em;
 }
 </style>
 </head>
@@ -38,6 +62,15 @@ body {
 <body onload='startExportedGame()'>
 <!-- GAME CANVAS -->
 <canvas id='game'></canvas>
+
+<div id='links'>
+	<div>
+		<a href="https://github.com/mildmojo/undetect" target="_blank">home</a> |
+		<a href="https://mildmojo.itch.io/left-undetected" target="_blank">itch</a> |
+		<a href="https://twitter.com/mildmojo" target="_blank">twitter</a> |
+		<a href="https://mildmojo.com" target="_blank">other games</a>
+	</div>
+</div>
 
 <!-- SCRIPTS -->
 <script>
