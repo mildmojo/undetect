@@ -5347,7 +5347,9 @@ function onkeyup(e) {
 		keyDownList.splice( keyDownList.indexOf( e.keyCode ), 1 );
 
 	// todo is this robust enough?
-	if( keyDownList.length <= 0 )
+	var arrowKeys = [key.left, key.right, key.up, key.down];
+	var isArrowKey = function(keyCode) { return arrowKeys.indexOf(keyCode) !== -1 }
+	if( keyDownList.filter(isArrowKey).length <= 0 )
 		curPlayerDirection = Direction.None;
 
 	console.log(e.keyCode);
