@@ -39,8 +39,8 @@ ROOM 0
 0,a,a,a,a,a,a,a,a,a,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,n,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
-0,q,0,0,o,p,0,0,l,k,h,0,d,0,0,0
-0,a,0,0,0,0,0,0,0,a,j,0,d,0,0,0
+0,q,0,0,v,w,0,0,l,k,h,0,d,0,0,0
+0,a,0,0,y,x,0,0,0,a,j,0,d,0,0,0
 0,a,0,0,0,0,0,0,m,k,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
@@ -63,8 +63,8 @@ ROOM 1
 0,a,a,a,a,a,a,a,a,a,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,n,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
-0,q,0,0,o,p,0,0,u,k,h,0,d,0,0,0
-0,a,0,0,0,0,0,0,0,a,j,0,d,0,0,0
+0,q,0,0,v,w,0,0,u,k,h,0,d,0,0,0
+0,a,0,0,y,x,0,0,0,a,j,0,d,0,0,0
 0,a,0,0,0,0,0,0,u,k,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,u,k,0,0,0,0,0,0
@@ -87,8 +87,8 @@ ROOM 2
 0,a,a,a,a,a,a,a,a,a,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,n,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
-0,q,0,0,o,p,0,0,u,k,h,r,d,0,0,0
-0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,q,0,0,v,w,0,0,u,k,h,r,d,0,0,0
+0,a,0,0,y,x,0,0,0,a,j,s,d,0,0,0
 0,a,0,0,0,0,0,0,u,k,h,t,d,0,0,0
 0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,u,k,0,0,0,0,0,0
@@ -111,8 +111,8 @@ ROOM 3
 0,a,a,a,a,a,a,a,a,a,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,n,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
-0,q,0,0,o,p,0,0,l,k,h,r,d,0,0,0
-0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,q,0,0,v,w,0,0,l,k,h,r,d,0,0,0
+0,a,0,0,y,x,0,0,0,a,j,s,d,0,0,0
 0,a,0,0,0,0,0,0,m,k,h,t,d,0,0,0
 0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
@@ -135,8 +135,8 @@ ROOM 4
 0,a,a,a,a,a,a,a,a,a,h,0,d,0,0,0
 0,a,0,0,0,0,0,0,n,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,a,i,b,c,0,0,0
-0,0,0,0,o,p,0,0,l,k,h,r,d,0,0,0
-0,a,0,0,0,0,0,0,0,a,j,s,d,0,0,0
+0,0,0,0,v,w,0,0,l,k,h,r,d,0,0,0
+0,a,0,0,y,x,0,0,0,a,j,s,d,0,0,0
 0,a,0,0,0,0,0,0,m,k,h,t,d,0,0,0
 0,a,0,0,0,0,0,0,0,a,g,f,e,0,0,0
 0,a,0,0,0,0,0,0,0,k,0,0,0,0,0,0
@@ -150,12 +150,12 @@ ROOM 4
 NAME ending_gone
 ITM 5 3,10
 ITM 5 4,10
-ITM 5 5,11
 ITM 5 4,12
 ITM 5 3,12
 ITM 6 2,4
 ITM 6 13,12
-ITM b 4,3
+ITM b 8,5
+ITM 5 5,11
 END 0 1,4
 PAL 3
 
@@ -411,6 +411,50 @@ TIL u
 00001000
 10100100
 
+TIL v
+00000000
+00000000
+00000000
+00000000
+00000000
+11111111
+01111111
+01000000
+WAL true
+
+TIL w
+00011000
+00111100
+01100110
+01111110
+00000000
+11111111
+11100110
+01111110
+WAL true
+
+TIL x
+01100110
+00000010
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+WAL true
+
+TIL y
+01000000
+01000000
+00000000
+00000000
+00000000
+00000000
+00000000
+00000000
+WAL true
+
 SPR 10
 00000000
 00000000
@@ -563,30 +607,30 @@ POS 2 11,6
 SPR A
 00000000
 00000000
-00011000
-00100100
 00000000
-00011000
-00111100
 00000000
+00000000
+01111110
+11000011
+11000011
 >
 00000000
-00001000
-00010100
-00100000
 00000000
-00011000
-00111100
 00000000
+00000000
+00011110
+01100011
+11000011
+11000000
 >
 00000000
-00010000
-00101000
-00000100
 00000000
-00011000
-00111100
 00000000
+00000000
+01111000
+11000110
+11000011
+00000011
 POS 0 5,3
 
 SPR a
@@ -678,22 +722,22 @@ POS 0 11,6
 
 SPR d
 00000000
-00000000
-00000000
+00000010
+00011001
+11001111
 11011111
-11001110
-01000111
+01000000
 01111111
 00111111
 POS 0 3,11
 
 SPR e
-00011100
-00010100
-00011100
-11110101
+00111000
+10101000
+10111000
+11101011
 00111011
-11100010
+00000010
 11111110
 11111100
 DLG SPR_0
@@ -734,22 +778,22 @@ POS 1 11,6
 
 SPR i
 00000000
-00000000
-00000000
+00000010
+00011001
+11001111
 11011111
-11001110
-01000111
+01000000
 01111111
 00111111
 POS 1 3,11
 
 SPR j
-00011100
-00010100
-00011100
-11110101
+00111000
+10101000
+10111000
+11101011
 00111011
-11100010
+00000010
 11111110
 11111100
 DLG SPR_1
@@ -757,22 +801,22 @@ POS 1 4,11
 
 SPR k
 00000000
-00000000
-00000000
+00000010
+00011001
+11001111
 11011111
-11001110
-01000111
+01000000
 01111111
 00111111
 POS 2 3,11
 
 SPR l
-00011100
-00010100
-00011100
-11110101
+00111000
+10101000
+10111000
+11101011
 00111011
-11100010
+00000010
 11111110
 11111100
 DLG SPR_2
@@ -780,22 +824,22 @@ POS 2 4,11
 
 SPR m
 00000000
-00000000
-00000000
+00000010
+00011001
+11001111
 11011111
-11001110
-01000111
+01000000
 01111111
 00111111
 POS 3 3,11
 
 SPR n
-00011100
-00010100
-00011100
-11110101
+00111000
+10101000
+10111000
+11101011
 00111011
-11100010
+00000010
 11111110
 11111100
 DLG SPR_3
@@ -816,7 +860,7 @@ SPR p
 00000000
 00000000
 00000000
-00000001
+00000011
 00000011
 00000010
 11111110
@@ -1149,6 +1193,7 @@ ITM b
 00111100
 11111110
 00000000
+NAME hat
 DLG ITM_a
 
 DLG SPR_0
@@ -1174,7 +1219,7 @@ DLG SPR_1
   - noon < 1 ?
     SRIRACHA: He left for Salt Lake on "business" this morning.
     DETECTIVE: Sriracha? Hey, okay, I'll look into it.
-    SRIRACHA: BUSINESS MY BEAUTIFUL ASS, DETECTIVE.
+    SRIRACHA: "BUSINESS" MY BEAUTIFUL ASS, DETECTIVE.
     DETECTIVE: Okay, look, I've got an airline contact.{br}I'll be in touch. {noon = 1}{exit "evening" 5 3}
   - else ?
 
@@ -1207,7 +1252,7 @@ DLG SPR_2
 
     CASEY: Now I talk to real people. In person.{br}I'm out in the world. I can dress like I want.
     DETECTIVE: I've always liked the way you dress.{br}Think I could pull off a scarf with a trench?
-    CASEY: Aw. [smiling] Absolutely you could.{br}So: maybe do something else? Or nothing?
+    CASEY: Aw. [smiling] Absolutely you could.{br}So... maybe do something else? Or nothing?
     DETECTIVE: Maybe. Yeah, maybe.
 
     CASEY: Hey, I care about you.{br}{br}{br}You're important to me.{br}There's a million ways to live.
@@ -1249,7 +1294,7 @@ DLG ITM_1
 """
 {
   - {item "noon_desc"} < 2 ?
-    [INT. OFFICE - DAY. Mid-day sun shines on Detecitve, COUCH.]
+    [INT. OFFICE - DAY. Mid-day sun shines on Detective, COUCH.]
   - else ?
 
 }
@@ -1336,28 +1381,10 @@ DLG ITM_9
 """
 
 DLG ITM_a
-[Detective's HAT sits on the desk. Detective is absent.]
+[Detective's HAT rests on the windowsill.]
 
 END 0
 LEFT UNDETECTED{br}by MILDMOJO{br}Global Game Jam 2018{br}T: @mildmojo W: mildmojo.com
-
-END undefined
-
-
-END undefinee
-
-
-END undefinef
-
-
-END undefineg
-
-
-END undefineh
-
-
-END undefinei
-
 
 VAR morning
 0
