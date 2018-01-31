@@ -1,4 +1,4 @@
-#!/bin/env node
+#!/usr/bin/env node
 
 'use strict';
 
@@ -7,7 +7,7 @@ const path = require('path');
 const execSync = require('child_process').execSync;
 
 const PROJECT = 'left-undetected';
-const VERSION = '0.2';
+const VERSION = '0.3';
 
 const CONTAINER_FILE = 'docs/index.html';
 const OUTPUT_FILE = `dist/${PROJECT}/index.html`;
