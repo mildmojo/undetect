@@ -4660,52 +4660,16 @@ function attachCanvas(c) {
 
 var curGameData = null;
 function load_game(game_data, startWithTitle) {
-	tryImportGameData(game_data, function withGameData(err, importedData) {
-		curGameData = importedData; //remember the current game (used to reset the game)
-		dialogBuffer.Reset();
-		scriptInterpreter.ResetEnvironment(); // ensures variables are reset -- is this the best way?
-		// console.log(dialog);
-		parseWorld(importedData);
-		// console.log(dialog);
-		setInitialVariables();
-		renderImages();
-		onready(startWithTitle);
-		// console.log(dialog);
-	});
-}
-
-function tryImportGameData(gameData, done) {
-	var rejectBlanks = function(line) { return !line.match(/^\s*$/); };
-	var lines = gameData.split("\n")
-	lines = lines.filter(rejectBlanks);
-
-	if (getType(lines[0]) === "IMPORT") {
-		var src = lines[0].split(/\s+/)[1];
-		if (!src) return done('IMPORT requires a URL or path to a Bitsy data file!');
-		return fetchData(src, done);
-	} else {
-		return done(null, gameData);
-	}
-}
-
-function fetchData(url, done) {
-	var request = new XMLHttpRequest();
-	request.open('GET', url, true);
-
-	request.onload = function() {
-		if (this.status >= 200 && this.status < 400) {
-			// Success!
-			return done(null, this.response);
-		} else {
-			return done('Failed to load game data: ' + request.statusText + ' (' + this.status + ')');
-		}
-	};
-
-	request.onerror = function() {
-		return done('Failed to load game data: ' + request.statusText);
-	};
-
-	request.send();
+	curGameData = game_data; //remember the current game (used to reset the game)
+	dialogBuffer.Reset();
+	scriptInterpreter.ResetEnvironment(); // ensures variables are reset -- is this the best way?
+	// console.log(dialog);
+	parseWorld(curGameData);
+	// console.log(dialog);
+	setInitialVariables();
+	renderImages();
+	onready(startWithTitle);
+	// console.log(dialog);
 }
 
 function reset_cur_game() {
@@ -6657,12 +6621,12 @@ var scriptUtils = scriptModule.CreateUtils(); // TODO: move to editor.js?
 			functionMap.set("exit", exitFunc);
 
 	NOTE: For full editor integration, you'd also need to paste this code at the
-	      end of the editor's `bitsy.js` file and add the `functionMap` line above
-	      to the editor's `script.js`. If you'd rather use the vanilla editor,
-	      just make sure not to edit dialog with {exit} calls in the dialog window.
-	      Always edit them in the dialog textbox of the sprite/item window.
-	      Editing a sprite or item's dialog in the dialog window will replace your
-	      `{exit "room,5,6"}` with `{}` and you probably won't notice.
+				end of the editor's `bitsy.js` file and add the `functionMap` line above
+				to the editor's `script.js`. If you'd rather use the vanilla editor,
+				just make sure not to edit dialog with {exit} calls in the dialog window.
+				Always edit them in the dialog textbox of the sprite/item window.
+				Editing a sprite or item's dialog in the dialog window will replace your
+				`{exit "room,5,6"}` with `{}` and you probably won't notice.
 */
 
 // Global variable to store data from the exit function encountered in dialog.
@@ -6719,6 +6683,87 @@ function doPlayerExit(dest) {
 	curRoom = dest.room;
 }
 </script>
+
+<script>
+	/*
+		=================================
+		EXTERNAL GAME DATA MOD (mildmojo)
+		=================================
+
+		Usage: IMPORT <file or URL>
+
+		Examples: IMPORT frontier.bitsydata
+		          IMPORT http://my-cool-website.nz/frontier/frontier.txt
+		          IMPORT /games/frontier/data/frontier.txt
+
+		Installation:
+		  1. Paste this code in new script tags right after the last /script> tag
+		     in your exported game HTML file.
+		  2. Copy all your Bitsy game data from the top of your HTML into another
+		     file and replace it with an IMPORT statement that refers to that file.
+
+		NOTE: Chrome can only fetch external files when they're served from a
+		      web server, not just opened from a file on disk. You could use Firefox
+		      or, if you have NodeJS or Python installed, try running one of these
+		      to serve the current directory from a local web server:
+		      https://gist.github.com/willurd/5720255
+
+		      If this mod finds an IMPORT statement anywhere in the Bitsy data
+		      contained in the HTML file, it will replace all game data with the
+		      IMPORTed data. It will not execute nested IMPORT statements in
+		      external files.
+	*/
+
+	var _load_game = load_game;
+	load_game = function(game_data, startWithTitle) {
+		tryImportGameData(game_data, function withGameData(err, importedData) {
+			if (err) {
+				console.error(err);
+				console.warn('Make sure game data IMPORT statement refers to a valid file or URL.');
+				_load_game(game_data, startWithTitle);
+			} else {
+				_load_game(importedData, startWithTitle);
+			}
+		});
+	};
+
+	function tryImportGameData(gameData, done) {
+		var rejectBlanks = function(line) { return !line.match(/^\s*$/); };
+		var lines = gameData.split("\n")
+		lines = lines.filter(rejectBlanks);
+
+		for (var i = 0; i < lines.length; i++) {
+			if (getType(lines[i]) === "IMPORT") {
+				var src = lines[i].split(/\s+/)[1];
+				if (!src) return done('IMPORT requires a URL or path to a Bitsy data file!');
+				return fetchData(src, done);
+			} else {
+				return done(null, gameData);
+			}
+		}
+	}
+
+	function fetchData(url, done) {
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+
+		request.onload = function() {
+			if (this.status >= 200 && this.status < 400) {
+				// Success!
+				return done(null, this.response);
+			} else {
+				return done('Failed to load game data: ' + request.statusText + ' (' + this.status + ')');
+			}
+		};
+
+		request.onerror = function() {
+			return done('Failed to load game data: ' + request.statusText);
+		};
+
+		request.send();
+	}
+</script>
+
 
 <script>
 	// Stack overfloooooowwwww
