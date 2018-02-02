@@ -6720,7 +6720,47 @@ function doPlayerExit(dest) {
 }
 </script>
 
-</body>
+<script>
+	// Stack overfloooooowwwww
+	var console = (function(oldCons){
+		var logHistory = [];
+		var silent = true;
 
+		function privateLog() {
+			if (!silent) return oldCons.log.apply(oldCons, arguments);
+			var args = [].slice.apply(arguments).map(function(arg) { return String(arg); });
+			logHistory.push(args);
+		}
+
+		return {
+			log: function(){
+				privateLog.apply(null, arguments);
+			},
+			info: function () {
+				privateLog.apply(null, arguments);
+			},
+			warn: function (text) {
+				oldCons.warn(text);
+			},
+			error: function (text) {
+				oldCons.error(text);
+			},
+			dir: function(arg) {
+				oldCons.dir(arg);
+			},
+			history: function() {
+				return logHistory;
+			},
+			toggle: function() {
+				silent = !silent;
+			}
+		};
+	}(window.console));
+
+	window.console = console;
+	// console.toggle();
+</script>
+
+</body>
 
 </html>
