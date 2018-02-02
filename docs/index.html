@@ -2879,6 +2879,7 @@ var Environment = function() {
 	functionMap.set("clr3", color3Func);
 	functionMap.set("wvy", wavyFunc);
 	functionMap.set("shk", shakyFunc);
+	functionMap.set("exit", exitFunc);
 
 	this.HasFunction = function(name) { return functionMap.has(name); };
 	this.EvalFunction = function(name,parameters,onReturn) {
@@ -6637,6 +6638,86 @@ var scriptModule = new Script();
 var scriptInterpreter = scriptModule.CreateInterpreter();
 var scriptUtils = scriptModule.CreateUtils(); // TODO: move to editor.js?
 // scriptInterpreter.SetDialogBuffer( dialogBuffer );
+
+/*
+	========================
+	DIALOG EXIT FUNCTION MOD
+	========================
+
+	Usage: {exit "<room name>,<x>,<y>"}
+
+	Example: {exit "FinalRoom,8,4"}
+
+	Installation:
+		1. Paste all this code at the bottom of your exported game's HTML file,
+			 right BEFORE the last /script> tag.
+		2. Search the HTML file for "functionMap.set" and paste this line after all
+			 the other ones:
+
+			functionMap.set("exit", exitFunc);
+
+	NOTE: For full editor integration, you'd also need to paste this code at the
+	      end of the editor's `bitsy.js` file and add the `functionMap` line above
+	      to the editor's `script.js`. If you'd rather use the vanilla editor,
+	      just make sure not to edit dialog with {exit} calls in the dialog window.
+	      Always edit them in the dialog textbox of the sprite/item window.
+	      Editing a sprite or item's dialog in the dialog window will replace your
+	      `{exit "room,5,6"}` with `{}` and you probably won't notice.
+*/
+
+// Global variable to store data from the exit function encountered in dialog.
+var queuedDialogExit = null;
+
+// Hook into the game reset and make sure exit data gets cleared.
+var _clearGameData = clearGameData;
+clearGameData = function() {
+	_clearGameData.apply(this, arguments);
+	queuedDialogExit = null;
+};
+
+// Hook into the dialog finish event; if there was an {exit}, travel there now.
+var _onExitDialog = onExitDialog;
+onExitDialog = function() {
+	_onExitDialog.apply(this, arguments);
+	if (queuedDialogExit) {
+		doPlayerExit(queuedDialogExit);
+		queuedDialogExit = null;
+	}
+};
+
+// Implement the {exit} dialog function. It saves the room name and destination
+// X/Y coordinates so we can travel there after the dialog is over.
+function exitFunc(environment, parameters, onReturn) {
+	parameters = parameters[0].split(',');
+	var roomName = parameters[0];
+	var x = parameters[1];
+	var y = parameters[2];
+	var roomId = names.room.get(roomName);
+
+	if (!roomName || x === undefined || y === undefined) {
+		console.warn('{exit} was missing parameters! Usage: {exit "roomname,x,y"}');
+	}
+
+	if (roomId === undefined) {
+		console.warn("Bad {exit} parameter: Room '" + roomName + "' not found!");
+	} else {
+		queuedDialogExit = {
+			room: roomId,
+			x: Number(x),
+			y: Number(y)
+		};
+	}
+
+	onReturn(null);
+}
+
+// `dest` looks like {room: roomId, x: Int, y: Int}
+function doPlayerExit(dest) {
+	player().room = dest.room;
+	player().x = dest.x;
+	player().y = dest.y;
+	curRoom = dest.room;
+}
 </script>
 
 </body>
