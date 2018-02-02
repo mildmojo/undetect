@@ -1502,13 +1502,12 @@ DLG SPR_2
 {
   - evening < 1 ?
     CASEY: Hi, Detective? It's Casey.
-    DETECTIVE: Casey! Hi! Wow, it's been a minute, huh?
-    CASEY: Yeah! You haven't been online lately, so I wanted to check in.
-
+    DETECTIVE: {clr2}Casey!{clr2} Hi! Wow, it's been a minute, huh?
+    CASEY: Yeah! You've been offline lately, so I wanted to check in.
     DETECTIVE: That's really sweet of you.{br}{br}I've just been so tired lately.
     CASEY: How's your case load?
 
-    DETECTIVE: It's fine. I've been thinking about...{br}not doing it anymore.
+    DETECTIVE: It's fine. I've been thinking about...{br}{clr1}not doing it anymore.{clr1}
 
     CASEY: Not doing cases? Like, becoming a consultant?
     DETECTIVE: Like leaving the biz. All of it.
@@ -1523,10 +1522,10 @@ DLG SPR_2
 
     CASEY: Now I talk to real people. In person.{br}I'm out in the world. I can dress like I want.
     DETECTIVE: I've always liked the way you dress.{br}Think I could pull off a scarf with a trench?
-    CASEY: Aw. [smiling] Absolutely you could.{br}So... maybe do something else? Or nothing?
+    CASEY: Aw. [smiling] {clr2}{wvy}Absolutely{wvy}{clr2} you could.{br}So... maybe do something else? Or nothing?
     DETECTIVE: Maybe. Yeah, maybe.
 
-    CASEY: Hey, I care about you.{br}{br}{br}You're important to me.{br}There's a million ways to live.
+    CASEY: Hey, I {clr2}care{clr2} about you.{br}{br}{br}{clr3}You're important to me.{clr3}{br}There's a {clr2}million{clr2} ways to live.
 
     DETECTIVE: Yeah. Thanks.
 
