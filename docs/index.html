@@ -2726,21 +2726,6 @@ function sayFunc(environment,parameters,onReturn) {
 		onReturn(null);
 }
 
-function exitFunc(environment, parameters, onReturn) {
-	var roomName = parameters[0];
-	var x = parameters[1];
-	var y = parameters[2]
-	var roomId = names.room.get(roomName);
-
-	if (roomId) {
-		queuedDialogExit = {
-			room: roomId,
-			x: x,
-			y: y
-		};
-	}
-}
-
 function linebreakFunc(environment,parameters,onReturn) {
 	// console.log("LINEBREAK FUNC");
 	environment.GetDialogBuffer().AddLinebreak();
@@ -2886,7 +2871,6 @@ var Environment = function() {
 
 	var functionMap = new Map();
 	functionMap.set("say", sayFunc);
-	functionMap.set("exit", exitFunc);
 	functionMap.set("br", linebreakFunc);
 	functionMap.set("item", itemFunc);
 	functionMap.set("rbw", rainbowFunc);
@@ -4530,7 +4514,6 @@ var palette = {
 var ending = {};
 var variable = {}; // these are starting variable values -- they don't update (or I don't think they will)
 var playerId = "A";
-var queuedDialogExit = null;
 
 var names = {
 	room : new Map(),
@@ -4605,7 +4588,6 @@ function clearGameData() {
 	ending = {};
 	isEnding = false; //todo - correct place for this?
 	variable = {};
-	queuedDialogExit = null;
 	keyDownList = [];
 
 	//stores all image data for tiles, sprites, drawings
@@ -5344,7 +5326,10 @@ function movePlayer(direction) {
 		startNarrating( ending[end.id], true /*isEnding*/ );
 	}
 	else if (ext) {
-		doPlayerExit(ext.dest);
+		player().room = ext.dest.room;
+		player().x = ext.dest.x;
+		player().y = ext.dest.y;
+		curRoom = ext.dest.room;
 	}
 	else if (spr) {
 		startSpriteDialog( spr /*spriteId*/ );
@@ -6558,10 +6543,6 @@ function onExitDialog() {
 		isDialogPreview = false;
 		if (onDialogPreviewEnd != null)
 			onDialogPreviewEnd();
-	}
-	if (queuedDialogExit) {
-		doPlayerExit(queuedDialogExit);
-		queuedDialogExit = null;
 	}
 }
 
