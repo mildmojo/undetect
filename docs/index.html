@@ -12,48 +12,57 @@ IMPORT undetect.bitsydata
 
 <style>
 html {
-	margin:0px;
-	padding:0px;
+  margin:0px;
+  padding:0px;
 }
 
 body {
-	margin:0px;
-	padding:0px;
-	overflow:hidden;
-	background:#111;
+  margin:0px;
+  padding:0px;
+  overflow:hidden;
+  background:#111;
 }
 
 #game {
-	background:black;
-	width:100vw;
-	max-width:100vh;
-	margin:auto;
-	display:block;
-	transform: rotate(3deg);
-	z-index: 10;
+  background:black;
+  width:100vw;
+  max-width:100vh;
+  margin:auto;
+  display:block;
+  transform: rotate(3deg);
+  z-index: 10;
+}
+
+@media all and (min-width: 950px) and (min-height: 950px) {
+  #game {
+    /* https://caniuse.com/#search=image-render */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
+    image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+    image-rendering: pixelated;                 /* Awesome future-browsers       */
+  }
 }
 
 #links {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #links,
 #links a,
 #links a:visited {
-	font-family: Georgia, Serif;
-	font-size: 10pt;
-	color: #ccc;
+  font-family: Georgia, Serif;
+  font-size: 10pt;
+  color: #ccc;
 }
 
 #links div {
-	padding: 1em;
+  padding: 1em;
 }
 </style>
 </head>
@@ -64,12 +73,12 @@ body {
 <canvas id='game'></canvas>
 
 <div id='links'>
-	<div>
-		<a href="https://github.com/mildmojo/undetect" target="_blank">home</a> |
-		<a href="https://mildmojo.itch.io/left-undetected" target="_blank">itch</a> |
-		<a href="https://twitter.com/mildmojo" target="_blank">twitter</a> |
-		<a href="https://mildmojo.com" target="_blank">other games</a>
-	</div>
+  <div>
+    <a href="https://github.com/mildmojo/undetect" target="_blank">home</a> |
+    <a href="https://mildmojo.itch.io/left-undetected" target="_blank">itch</a> |
+    <a href="https://twitter.com/mildmojo" target="_blank">twitter</a> |
+    <a href="https://mildmojo.com" target="_blank">other games</a>
+  </div>
 </div>
 
 <!-- SCRIPTS -->
