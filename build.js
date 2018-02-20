@@ -7,7 +7,7 @@ const path = require('path');
 const execSync = require('child_process').execSync;
 
 const PROJECT = 'left-undetected';
-const VERSION = '0.7';
+const VERSION = '0.8';
 
 const CONTAINER_FILE = 'docs/index.html';
 const OUTPUT_FILE = `dist/${PROJECT}/index.html`;
