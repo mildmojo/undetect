@@ -6615,6 +6615,53 @@ var scriptUtils = scriptModule.CreateUtils(); // TODO: move to editor.js?
 </script>
 
 <script>
+(function(globals) {
+    'use strict';
+    var SPRITE_ID = 'SPR_' + playerId;
+    var PALETTE_NUM = 0;
+    var MARGIN = 2;
+
+    var _load_game = load_game;
+    globals.load_game = function(game_data, startWithTitle) {
+      _load_game.apply(this, arguments);
+      drawFavicon();
+    };
+
+    function drawFavicon() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 16+2*MARGIN;canvas.height = 16+2*MARGIN;
+      var ctx = canvas.getContext('2d');
+
+      var image = imageStore.source[SPRITE_ID][0];
+      var pal = getPal(PALETTE_NUM);
+      var bgColor = pal[0];
+      var spriteColor = pal[2];
+
+      ctx.fillStyle = 'rgb(' + bgColor.join(',') + ')';
+      ctx.fillRect(0,0,16+2*MARGIN,16+2*MARGIN);
+
+      ctx.fillStyle = 'rgb(' + spriteColor.join(',') + ')';
+      for (var y in image) {
+        for (var x in image[y]) {
+          if (image[y][x] === 1) ctx.fillRect(x*2+MARGIN,y*2+MARGIN,2,2);
+        }
+      }
+
+      var link = document.querySelector('#favicon');
+      if (!link) {
+        link = document.createElement('link');
+        link.id = 'favicon';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+      link.type = 'image/x-icon';
+      link.rel = 'shortcut icon';
+      link.href = canvas.toDataURL("image/x-icon");
+    }
+})(window);
+</script>
+
+
+<script>
 /*
   ====================================
   DIALOG EXIT FUNCTION MOD (@mildmojo)
