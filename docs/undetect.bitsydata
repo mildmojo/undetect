@@ -1256,6 +1256,7 @@ SPR z
 00000000
 00000000
 00000000
+NAME at
 POS 3 11,5
 
 ITM 1
@@ -1449,7 +1450,7 @@ DLG SPR_0
     [silence]
 
     MARTA: So... you'll give me a call?
-    DETECTIVE: Yeah, definitely. I gotta go; take care, Marta. {morning = 1}{exit "noon,5,3"}
+    DETECTIVE: Yeah, definitely. I gotta go; take care, Marta. {morning = 1}(exit "noon,5,3")
   - else ?
 
 }
@@ -1462,7 +1463,7 @@ DLG SPR_1
     SRIRACHA: He left for Salt Lake on "business" this morning.
     DETECTIVE: Sriracha? Hey, okay, I'll look into it.
     SRIRACHA: "BUSINESS" MY BEAUTIFUL ASS, DETECTIVE.
-    DETECTIVE: Okay, look, I've got an airline contact.{br}I'll be in touch. {noon = 1}{exit "evening,5,3"}
+    DETECTIVE: Okay, look, I've got an airline contact.{br}I'll be in touch. {noon = 1}(exit "evening,5,3")
   - else ?
 
 }
@@ -1501,7 +1502,7 @@ DLG SPR_2
     DETECTIVE: Yeah. Thanks.
 
     CASEY: Let's get lunch sometime.{br}{br}I'll be in the city next week...?
-    DETECTIVE: Yeah, definitely. {evening = 1}{exit "night,5,3"}
+    DETECTIVE: Yeah, definitely. {evening = 1}(exit "night,5,3")
   - else ?
 
 }
@@ -1515,7 +1516,7 @@ DLG SPR_3
 
     Hello, you still there?
 
-    DETECTIVE: Yeah, sorry, wrong number. {night = 1}{exit "ending_gone,5,3"}
+    DETECTIVE: Yeah, sorry, wrong number. {night = 1}(exit "ending_gone,5,3")
   - else ?
 
 }
